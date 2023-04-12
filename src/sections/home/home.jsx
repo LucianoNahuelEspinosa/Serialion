@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
 const Home = () => {
-    const [m, setM] = useState();
+    const [serialPorts, setSerialPorts] = useState();
 
     useEffect(() => {
-        electron.IpcApi.sendMessage('hello', "Finally!");
-        electron.IpcApi.getMessage('hello', (data) => {
-            setM(data);
+        electron.IpcApi.sendMessage('ports', "serialPorts");
+        electron.IpcApi.getMessage('ports', (data) => {
+            setSerialPorts(data);
         });
 
     }, []);
 
-    return(
+    return (
         <section className='home'>
-            Hola {m}
+           Serial Ports: {serialPorts}
         </section>
     );
 }

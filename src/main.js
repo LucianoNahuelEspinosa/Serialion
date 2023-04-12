@@ -1,5 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
-const path = require('path');
+const isDev = require('electron-is-dev');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -23,8 +23,13 @@ const createWindow = () => {
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  if (isDev) {
+    // Open the DevTools.
+    mainWindow.webContents.openDevTools();
+  } else {
+    //Hide Menu Bar
+    mainWindow.setMenuBarVisibility(false);
+  }
 };
 
 // This method will be called when Electron has finished
@@ -51,7 +56,9 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-ipcMain.on("hello", (e, message) => {
+
+//IPCs
+ipcMain.on("ports", (e, message) => {
   // console.log(message);
-  e.reply('hello', 'React, soy Electron');
+  e.reply('ports', 'portssss');
 });

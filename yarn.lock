@@ -1859,6 +1859,11 @@
   "resolved" "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz"
   "version" "1.1.1"
 
+"electron-is-dev@^2.0.0":
+  "integrity" "sha512-3X99K852Yoqu9AcW50qz3ibYBWY79/pBhlMCab8ToEWS48R0T9tyxRiQhwylE7zQdXrMnx2JKqUJyMPmt5FBqA=="
+  "resolved" "https://registry.npmjs.org/electron-is-dev/-/electron-is-dev-2.0.0.tgz"
+  "version" "2.0.0"
+
 "electron-packager@^17.1.1":
   "integrity" "sha512-r1NDtlajsq7gf2EXgjRfblCVPquvD2yeg+6XGErOKblvxOpDi0iulZLVhgYDP4AEF1P5/HgbX/vwjlkEv7PEIQ=="
   "resolved" "https://registry.npmjs.org/electron-packager/-/electron-packager-17.1.1.tgz"
