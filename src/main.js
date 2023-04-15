@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const isDev = require('electron-is-dev');
+require('./serial');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -58,7 +59,3 @@ app.on('activate', () => {
 // code. You can also put them in separate files and import them here.
 
 //IPCs
-ipcMain.on("ports", (e, message) => {
-  // console.log(message);
-  e.reply('ports', 'portssss');
-});

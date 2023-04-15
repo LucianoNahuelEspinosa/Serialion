@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const Home = () => {
-    const [serialPorts, setSerialPorts] = useState();
+    const [serialPorts, setSerialPorts] = useState([]);
 
     useEffect(() => {
         electron.IpcApi.sendMessage('ports', "serialPorts");
@@ -13,7 +13,10 @@ const Home = () => {
 
     return (
         <section className='home'>
-           Serial Ports: {serialPorts}
+            Serial Ports: 
+            {serialPorts.map((data) => {
+                return <p key={data.path}>{data.friendlyName}</p>
+            })}
         </section>
     );
 }
