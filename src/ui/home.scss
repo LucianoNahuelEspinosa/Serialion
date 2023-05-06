@@ -1,0 +1,62 @@
+.home {
+    width: 100%;
+
+    h1 {
+        font-size: 52px;
+        color: #9DE0AD;
+        text-align: center;
+        margin: 0 0 60px;
+    }
+
+    form {
+        label {
+            display: block;
+            font-size: 18px;
+            color: #9DE0AD;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            max-width: 700px;
+            background-color: #E5FCC2;
+            border-radius: 10px;
+            height: 34px;
+            border: 1px solid #9DE0AD;
+            outline: none;
+            transition: all .5s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &:focus {
+                box-shadow: 0px 0px 0px 5px rgba(157, 224, 173, 0.36);
+            }
+        }
+
+        .buttons-form {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+    }
+
+    .serial-data {
+        margin-top: 20px;
+
+        h2 {
+            font-size: 36px;
+            margin: 0 0 40px;
+            color: #9DE0AD;
+            text-align: center;
+        }
+
+        p {
+            font-size: 16px;
+            color: #594F4F;
+        }
+    }
+}

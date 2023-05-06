@@ -1,31 +1,48 @@
 import React, { useEffect, useState } from 'react';
+import './home.scss';
 
 const Home = () => {
     const [serialPorts, setSerialPorts] = useState([]);
     const [therePort, setTherePort] = useState(false);
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
 
-    useEffect(() => {
+    const [selectValueInput, setSelectValueInput] = useState('');
+
+    const getPorts = () => {
         electron.IpcApi.sendMessage('ports', "serialPorts");
         electron.IpcApi.getMessage('ports', (data) => {
             setSerialPorts(data);
         });
-    }, []);
+    }
 
-    const selectPort3 = () => {
-        electron.IpcApi.sendMessage('selectPort', "COM3");
+    const selectPort = (e) => {
+        e.preventDefault();
+
+        electron.IpcApi.sendMessage('selectPort', selectValueInput);
         electron.IpcApi.getMessage('selectPort', (data) => {
             console.log(data);
             setTherePort(true);
         });
     }
 
+    const processData = (d) => {
+        const splitData = d.split(':');
+        const obj = {'name': splitData[0], 'value': splitData[1]};
+        setData([obj]);
+    }
+
+    // Functions when the app has been started
+    useEffect(() => {
+        getPorts();
+    }, []);
+
+    // Functions for get data from Serial Ports selected
     useEffect(() => {
         const intervalId = setInterval(() => {
             if (therePort) {
                 electron.IpcApi.sendMessage('getData', "data");
                 electron.IpcApi.getMessage('getData', (data) => {
-                    setData(data);
+                    processData(data);
                 });
             }
         }, 500);
@@ -36,15 +53,37 @@ const Home = () => {
 
     return (
         <section className='home'>
-            Serial Ports:
-            {serialPorts.map((data) => {
-                return <p key={data.path}>{data.friendlyName}</p>
-            })}
+            <div className="container">
+                <h1>Serialion</h1>
 
-            <button onClick={selectPort3}>Connect</button>
+                <form onSubmit={selectPort}>
+                    <label htmlFor="ports">Serial Ports</label>
+                    <select name="ports" id="ports" required={true} value={selectValueInput} onChange={(e) => setSelectValueInput(e.target.value)}>
+                        <option value="" disabled={true}>Select...</option>
+                        {serialPorts.map((data) => {
+                            return <option key={data.path} value={data.path}>{data.friendlyName}</option>
+                        })}
+                    </select>
 
-            <h4>Data:</h4>
-            <p>{data}</p>
+                    <div className="buttons-form">
+                        <button type="submit" className='button-primary'>Connect</button>
+                        <button type="reset" className='button-secondary' onClick={getPorts}>Refresh</button>
+                    </div>
+                </form>
+
+                <div className='serial-data'>
+                    <h2>Data</h2>
+                    
+                    {data.map((d) => {
+                        return(
+                            <div key={d.name}>
+                                <p>{d.name}</p>
+                                <h3>{d.value}</h3>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
         </section>
     );
 }

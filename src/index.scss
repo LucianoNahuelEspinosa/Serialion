@@ -4,4 +4,48 @@ body {
   margin: auto;
   max-width: 100%;
   padding: 2rem;
+  background: #547980;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+
+  @media (max-width: 1440px) {
+    max-width: 100%;
+    padding: 0 100px;
+  }
+
+  @media (max-width: 1000px) {
+    padding: 0 20px;
+  }
+}
+
+@mixin button($bg, $bgHover) {
+  display: block;
+  width: fit-content;
+  height: auto;
+  padding: 10px 25px;
+  text-align: center;
+  font-size: 16px;
+  transition: all .5s ease-in;
+  background: $bg;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.35);
+  user-select: none;
+
+  &:hover {
+    background: $bgHover;
+  }
+}
+
+.button-primary {
+  @include button(#45ADA8, #9DE0AD);
+}
+
+.button-secondary {
+  @include button(#9DE0AD, #45ADA8);
 }
