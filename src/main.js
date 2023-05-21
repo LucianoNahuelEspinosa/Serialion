@@ -18,6 +18,7 @@ const createWindow = () => {
       contextIsolation: true,
       worldSafeExecuteJavaScript: true,
       enableRemoteModule: false,
+      webSecurity: isDev ? false : true,
     },
   });
 

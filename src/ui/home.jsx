@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './home.scss';
+import Data from './components/Data/Data.jsx';
 
 const Home = () => {
     const [serialPorts, setSerialPorts] = useState([]);
@@ -45,7 +46,7 @@ const Home = () => {
                     processData(data);
                 });
             }
-        }, 500);
+        }, 1000);
         return () => {
             clearInterval(intervalId);
         };
@@ -75,12 +76,7 @@ const Home = () => {
                     <h2>Data</h2>
                     
                     {data.map((d) => {
-                        return(
-                            <div key={d.name}>
-                                <p>{d.name}</p>
-                                <h3>{d.value}</h3>
-                            </div>
-                        )
+                        return <Data key={d.name} data={d} />
                     })}
                 </div>
             </div>
