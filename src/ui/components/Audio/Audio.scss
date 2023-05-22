@@ -1,0 +1,30 @@
+.audio-setup {
+    input[type="file"] {
+        margin-bottom: 10px;
+
+        &::file-selector-button {
+            height: 40px;
+            padding: 10px 25px;
+            text-align: center;
+            font-size: 16px;
+            transition: all .5s ease-in;
+            background: #45ADA8;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 10px 10px 19px 0px rgba(0, 0, 0, 0.35);
+            user-select: none;
+            margin: 40px 0;
+            margin-right: 10px;
+
+            &:hover {
+                background: #9DE0AD;
+            }
+
+            &:active {
+                background: #81b98e;
+            }
+        }
+    }
+}

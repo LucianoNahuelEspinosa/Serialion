@@ -33,7 +33,7 @@ const readData = () => {
     if (selectPort !== null) {
         const parser = selectPort.pipe(new ReadlineParser());
         parser.on('data', (data) => {
-            console.log(data);
+            // console.log(data);
             serialData = data;
         });
     }
@@ -41,9 +41,6 @@ const readData = () => {
 
 ipcMain.on("getData", (e, message) => {
     // console.log(message);
+    readData();
     e.reply('getData', serialData);
 });
-
-setInterval(() => {
-    readData();
-}, 1000);
