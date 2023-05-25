@@ -7,6 +7,7 @@ const Audio = ({ value }) => {
 
     // Volume Functions
     const [volume, setVolume] = useState(1);
+    const [volumeRange, setVolumeRange] = useState(1);
     const [volumeChecked, setVolumeChecked] = useState(false);
     const [rangeFrom, setRangeFrom] = useState(0);
     const [rangeTo, setRangeTo] = useState(1);
@@ -20,8 +21,10 @@ const Audio = ({ value }) => {
     useEffect(() => {
         if (volume < 1) {
             audioRef.current.volume = volume;
+            setVolumeRange(volume);
         } else {
             audioRef.current.volume = 1;
+            setVolumeRange(1);
         }
     }, [volume]);
 
@@ -43,7 +46,7 @@ const Audio = ({ value }) => {
 
             <div className="audio-settings" style={{ display: file !== null ? 'block' : 'none' }}>
                 <div className="settings-checkboxes">
-                    <input type="checkbox" value="Volume" checked={volumeChecked} onChange={() => setVolumeChecked(!volumeChecked)} />
+                    <label><input type="checkbox" value="Volume" checked={volumeChecked} onChange={() => setVolumeChecked(!volumeChecked)}/>Volume</label>
                 </div>
                 <div className='volume-settings' style={{ display: volumeChecked ? 'block' : 'none' }}>
                     <div className="range-value">
@@ -56,8 +59,7 @@ const Audio = ({ value }) => {
                             <input type="number" value={rangeTo} onChange={(e) => setRangeTo(e.target.value)} />
                         </div>
                     </div>
-                    <label>Volume</label>
-                    <input type="range" value={volume} onChange={(e) => setVolume(e.target.value)} min={0} max={1} />
+                    <input type="range" value={volumeRange} min={0.00} max={1.00} step={0.01} readOnly={true} />
                 </div>
             </div>
         </div>
