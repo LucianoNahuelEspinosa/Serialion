@@ -59,7 +59,7 @@ const Audio = ({ value }) => {
                             <input type="number" value={rangeTo} onChange={(e) => setRangeTo(e.target.value)} />
                         </div>
                     </div>
-                    <input type="range" value={volumeRange} min={0.00} max={1.00} step={0.01} readOnly={true} />
+                    <input type="range" value={volumeRange} min={0.00} max={1.00} step={0.001} readOnly={true} style={{ backgroundSize: [`${volumeRange*100}%`, '100%'] }} />
                 </div>
             </div>
         </div>

@@ -31,6 +31,40 @@
     }
 
     .input-file-data {
-        margin: 20px 0;
+        margin: 20px 0 0;
+    }
+
+    .input-osc-data {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: end;
+        margin-top: 20px;
+
+        .input-group {
+            label {
+                display: block;
+                font-size: 18px;
+                color: #46644d;
+                margin-bottom: 10px;
+            }
+
+            input {
+                display: block;
+                width: -webkit-fill-available;
+                max-width: 500px;
+                background-color: #E5FCC2;
+                border-radius: 10px;
+                height: 34px;
+                border: 1px solid #9DE0AD;
+                outline: none;
+                transition: all .5s ease-in-out;
+                padding: 0 15px;
+
+                &:focus {
+                    box-shadow: 0px 0px 0px 5px rgba(157, 224, 173, 0.36);
+                }
+            }
+        }
     }
 }
