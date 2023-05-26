@@ -1,0 +1,71 @@
+.osc-settings {
+    flex: 0 0 40%;
+
+    h2 {
+        display: block;
+        font-size: 24px;
+        color: #9DE0AD;
+        margin-bottom: 10px;
+    }
+
+    .add-client {
+        margin-top: 20px;
+
+        .input-group {
+            margin-bottom: 15px;
+
+            label {
+                display: block;
+                font-size: 18px;
+                color: #9DE0AD;
+                margin-bottom: 10px;
+            }
+
+            input {
+                display: block;
+                width: -webkit-fill-available;
+                max-width: 700px;
+                background-color: #E5FCC2;
+                border-radius: 10px;
+                height: 34px;
+                border: 1px solid #9DE0AD;
+                outline: none;
+                transition: all .5s ease-in-out;
+                padding: 0 15px;
+
+                &:focus {
+                    box-shadow: 0px 0px 0px 5px rgba(157, 224, 173, 0.36);
+                }
+            }
+        }
+
+        .buttons-holder {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+    }
+
+    .osc-clients-holder {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+
+        .osc-client-card {
+            flex: 0 0 33%;
+            width: -webkit-fill-available;
+            height: auto;
+            padding: 20px;
+            background-color: #71c984;
+            backdrop-filter: blur(20px);
+            border-radius: 10px;
+
+            button {
+                margin: 10px auto 0;
+            }
+        }
+    }
+}

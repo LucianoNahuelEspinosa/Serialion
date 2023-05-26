@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './home.scss';
+import OSC from './components/OSC/Osc.jsx';
 import Data from './components/Data/Data.jsx';
 
 const Home = () => {
@@ -28,7 +29,7 @@ const Home = () => {
 
     const processData = (d) => {
         const splitData = d.split(':');
-        const obj = {'name': splitData[0], 'value': splitData[1]};
+        const obj = { 'name': splitData[0], 'value': splitData[1] };
         setData([obj]);
     }
 
@@ -57,24 +58,27 @@ const Home = () => {
             <div className="container">
                 <h1>Serialion</h1>
 
-                <form onSubmit={selectPort}>
-                    <label htmlFor="ports">Serial Ports</label>
-                    <select name="ports" id="ports" required={true} value={selectValueInput} onChange={(e) => setSelectValueInput(e.target.value)}>
-                        <option value="" disabled={true}>Select...</option>
-                        {serialPorts.map((data) => {
-                            return <option key={data.path} value={data.path}>{data.friendlyName}</option>
-                        })}
-                    </select>
+                <div className="main-settings-holder">
+                    <form onSubmit={selectPort}>
+                        <label htmlFor="ports">Serial Ports</label>
+                        <select name="ports" id="ports" required={true} value={selectValueInput} onChange={(e) => setSelectValueInput(e.target.value)}>
+                            <option value="" disabled={true}>Select...</option>
+                            {serialPorts.map((data) => {
+                                return <option key={data.path} value={data.path}>{data.friendlyName}</option>
+                            })}
+                        </select>
 
-                    <div className="buttons-form">
-                        <button type="submit" className='button-primary'>Connect</button>
-                        <button type="reset" className='button-secondary' onClick={getPorts}>Refresh</button>
-                    </div>
-                </form>
+                        <div className="buttons-form">
+                            <button type="submit" className='button-primary'>Connect</button>
+                            <button type="reset" className='button-secondary' onClick={getPorts}>Refresh</button>
+                        </div>
+                    </form>
+                    <OSC />
+                </div>
 
                 <div className='serial-data'>
                     <h2>Data</h2>
-                    
+
                     {data.map((d) => {
                         return <Data key={d.name} data={d} />
                     })}

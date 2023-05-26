@@ -8,10 +8,20 @@
         margin: 0 0 60px;
     }
 
+    .main-settings-holder {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
     form {
+        flex: 0 0 50%;
+
         label {
             display: block;
-            font-size: 18px;
+            font-size: 24px;
             color: #9DE0AD;
             margin-bottom: 10px;
         }
