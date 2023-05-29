@@ -19,12 +19,15 @@ const Audio = ({ value }) => {
     }, [value]);
 
     useEffect(() => {
-        if (volume < 1) {
+        if (volume >= 0 && volume <= 1) {
             audioRef.current.volume = volume;
             setVolumeRange(volume);
-        } else {
+        } else if (volume > 1) {
             audioRef.current.volume = 1;
             setVolumeRange(1);
+        } else {
+            audioRef.current.volume = 0;
+            setVolumeRange(0);
         }
     }, [volume]);
 

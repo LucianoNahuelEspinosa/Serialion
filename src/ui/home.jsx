@@ -28,9 +28,16 @@ const Home = () => {
     }
 
     const processData = (d) => {
-        const splitData = d.split(':');
-        const obj = { 'name': splitData[0], 'value': splitData[1] };
-        setData([obj]);
+        const splitAllData = d.split(',');
+        let objData = [];
+
+        for (let i = 0; i < splitAllData.length-1; i++) {
+            const splitData = splitAllData[i].split(':');
+            const obj = { 'name': splitData[0], 'value': splitData[1] };
+            objData.push(obj);
+        }
+
+        setData(objData);
     }
 
     // Functions when the app has been started

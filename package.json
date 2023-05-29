@@ -1,6 +1,6 @@
 {
   "name": "serialion",
-  "productName": "serialion",
+  "productName": "Serialion",
   "version": "1.0.0",
   "description": "Software for get all serial data from sensors in your Arduino or Raspberry pi",
   "main": ".webpack/main",
@@ -10,7 +10,7 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\"",
-    "install": "electron-rebuild"
+    "rebuild": "electron-rebuild -f -w serialport"
   },
   "keywords": [],
   "author": {
@@ -18,6 +18,38 @@
     "email": "nachuespinosa@gmail.com"
   },
   "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "asar": true
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "Serialion"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin",
+            "linux"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "name": "Serialion"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-react": "^7.18.6",
