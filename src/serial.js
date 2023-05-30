@@ -13,6 +13,14 @@ ipcMain.on("ports", (e, message) => {
     e.reply('ports', ports);
 });
 
+ipcMain.on("refreshPorts", (e, message) => {
+    SerialPort.list().then(port => {
+        ports = port;
+        console.log(port);
+        e.reply('refreshPorts', port);
+    });
+});
+
 let selectPort = null;
 
 ipcMain.on("selectPort", (e, message) => {

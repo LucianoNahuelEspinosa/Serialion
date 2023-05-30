@@ -31,13 +31,21 @@ const Home = () => {
         const splitAllData = d.split(',');
         let objData = [];
 
-        for (let i = 0; i < splitAllData.length-1; i++) {
+        for (let i = 0; i < splitAllData.length - 1; i++) {
             const splitData = splitAllData[i].split(':');
             const obj = { 'name': splitData[0], 'value': splitData[1] };
             objData.push(obj);
         }
 
         setData(objData);
+    }
+
+    const refreshList = () => {
+        electron.IpcApi.sendMessage('refreshPorts', "serialPorts");
+        electron.IpcApi.getMessage('refreshPorts', (data) => {
+            setSerialPorts(data);
+            console.log(data);
+        });
     }
 
     // Functions when the app has been started
@@ -77,7 +85,7 @@ const Home = () => {
 
                         <div className="buttons-form">
                             <button type="submit" className='button-primary'>Connect</button>
-                            <button type="reset" className='button-secondary' onClick={getPorts}>Refresh</button>
+                            <button type="reset" className='button-secondary' onClick={refreshList}>Refresh</button>
                         </div>
                     </form>
                     <OSC />

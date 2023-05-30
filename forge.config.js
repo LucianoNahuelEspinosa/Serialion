@@ -1,18 +1,27 @@
 module.exports = {
-  packagerConfig: {},
+  packagerConfig: {
+    "asar": true
+  },
   rebuildConfig: {},
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        name: "Serialion"
+      },
     },
     {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      platforms: [
+        'darwin',
+        "linux"
+      ],
     },
     {
       name: '@electron-forge/maker-deb',
-      config: {},
+      config: {
+        name: "Serialion"
+      },
     },
     {
       name: '@electron-forge/maker-rpm',
