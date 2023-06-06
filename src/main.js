@@ -21,6 +21,7 @@ const createWindow = () => {
       enableRemoteModule: false,
       webSecurity: isDev ? false : true,
     },
+    icon: './icon.ico',
   });
 
   // and load the index.html of the app.
